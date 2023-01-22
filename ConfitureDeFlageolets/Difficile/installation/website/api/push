@@ -1,0 +1,4 @@
+#!/bin/bash
+
+
+scp -r backend pi@192.168.1.97:/home/pi/Apps/

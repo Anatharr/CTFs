@@ -1,0 +1,56 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[french]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with`a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+
+
+\title{Scénarios CTF}
+\author{Cyprien Leschi, Hugo Sarazin, Jérémy Richard, Haroune Samouche, Steven Jaman}
+
+\begin{document}
+\maketitle
+
+\section{CTF 1}
+
+Initialement l'attaquant se trouve sur un site de prise de rendez-vous pour se faire vacciner. 
+Sa première mission est d'exécuter \textbf{un reverse shell} à l'aide d'une \textbf{injection SQL} sur un serveur \emph{postgreSQL}. 
+A ce stade l'attaquant est dans le système en tant que \emph{postgres}. Pour être connecté en tant qu'utilisateur, le contenu du dossier \emph{.ssh} pourra être lu par \emph{postgres}.
+Ainsi, l'attaquant pourra établir une \textbf{connexion ssh} avec la machine cible. 
+Le \underline{flag user} se trouvera dans \emph{/home/username/user.txt}.  \\
+
+Pour obtenir le \underline{flag root}, l'objectif est de \textbf{modifier l'uid de l'utilisateur avec lequel l'attaquant est connecté à 0} dans \emph{/etc/passwd} ou \textbf{modifier le mot de passe root} dans \emph{/etc/shadow}. 
+Seule la commande \emph{tee} sera autorisée sans mot de passe dans \emph{/etc/sudoers}. 
+Le \underline{flag root} se trouvera dans \emph{/root/root.txt}.
+
+
+\section{CTF 2}
+
+Initialement l'attaquant se trouve sur un site de réservation de billet pour un concert de rock. 
+Pour  parvenir à se connecter en tant qu'administrateur sur le site, il devra exploiter une \textbf{LFI (Local-remote File Inclusion)} couplée à un \textbf{php filter} 
+afin de récuperer le fichier de configuration du site qui contiendra les identifiants de l'administrateur avec un \textbf{mot de passe hashé} (ce mot de passe sera un mot de passe de la liste \emph{rockyou}). 
+Une fois dans le dashboard administrateur, il y aura un champ permettant à l'attaquant d'uploader une image sur le serveur.
+Il pourra donc uploader un \textbf{shell php}. 
+Cependant, le nom du fichier sera échangé par un mot de longueur 4-5 généré aléatoirement. 
+Le chemin pour parvenir jusqu'au shell php pourra être obtenu dans le code source récupéré grâce à la \textbf{LFI}. 
+Pour trouver le nom du \textbf{shell php}, il faudra effectuer un brute force 
+pour pouvoir entrer dans le système.
+ L'attaquant se retrouve dans un docker en tant que \emph{www-data}, il peut récupérer le \underline{flag user} dans \emph{/var/www/user.txt}. \\
+
+Pour récupérer le \underline{flag root}, il faut tout d'abord devenir root dans le docker. 
+Pour cela, l'attaquant devra exploiter une vulnérabilité de \textbf{logrotate}.
+Ensuite, il devra trouver un moyen d'effectuer un \textbf{docker escape}. 
+
+
+
+
+
+
+
+\end{document}
+

@@ -1,0 +1,26 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[french]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with`a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+
+
+\title{Scénarios CTF 1}
+\author{Cyprien Leschi, Hugo Sarazin, Jérémy Richard, Haroune Samouche, Steven Jaman}
+
+\begin{document}
+\maketitle
+
+\section{CTF 1}
+
+Initialement l'attaquant se trouve sur un site de prise de rendez-vous pour se faire vacciner. Sa première mission est d'exécuter un \textbf{bind shell} à l'aide d'une \textbf{injection SQL} sur un serveur \emph{postgreSQL}. A ce stade l'attaquant est dans le système en tant que \emph{postgres}. Le \underline{flag user} se trouvera dans \emph{/var/lib/postgresql/11/main/user.txt}.  \\
+
+Pour obtenir le \underline{flag root}, l'objectif est de \textbf{modifier l'uid de l'utilisateur avec lequel l'attaquant est connecté à 0} dans \emph{/etc/passwd} ou \textbf{modifier le mot de passe root} dans \emph{/etc/shadow}. Seule la commande \emph{tee} sera autorisée sans mot de passe dans \emph{/etc/sudoers}. Le \underline{flag root} se trouvera dans \emph{/root/root.txt}.
+
+
+\end{document}

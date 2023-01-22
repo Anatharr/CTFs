@@ -1,0 +1,26 @@
+#!/usr/sbin/openvpn
+
+client
+dev tun
+proto tcp
+# change this to your servers ip or hostname 
+ 
+cipher AES-256-GCM
+auth SHA256
+dh none
+
+remote 172.30.3.70 1194
+resolv-retry infinite
+nobind
+
+persist-key
+persist-tun
+
+ca keys/ca.crt
+cert keys/projet-secu.crt
+key keys/projet-secu.key
+tls-crypt keys/ta.key
+
+verb 3
+
+route 172.30.150.0 255.255.255.0

@@ -1,0 +1,17 @@
+{
+  "name": "ctf3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "canvas": "^2.8.0",
+    "gl": "^4.9.2",
+    "net": "^1.0.2",
+    "three": "^0.135.0"
+  }
+}

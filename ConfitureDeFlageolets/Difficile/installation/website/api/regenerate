@@ -1,0 +1,6 @@
+#!/bin/bash
+
+rm backend/db.sqlite
+source .venv/bin/activate
+python -c 'from backend import db,app;db.create_all(app=app)'
+
